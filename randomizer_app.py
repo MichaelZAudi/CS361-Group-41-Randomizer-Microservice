@@ -12,9 +12,9 @@ def health_check():
 @app.route('/rand/num', methods = ['POST'])
 def random_number():
     in_data = request.get_json()
-    type = in_data.get_json('type')
-    start = in_data.get_json('start')
-    end = in_data.get_json('end')
+    type = in_data.get('type')
+    start = in_data.get('start')
+    end = in_data.get('end')
 
     # no type, error
     if not type:
