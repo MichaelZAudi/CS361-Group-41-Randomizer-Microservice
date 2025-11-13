@@ -19,15 +19,15 @@ def random_number():
     # no type, error
     if not type:
         return jsonify({'status': 'error',
-                        'error_message': 'need a type (int or float) to return'})
+                        'error_message': 'need a type (int or float) to return'}), 400
     # no start, error
     if not start:
         return jsonify({'status': 'error',
-                        'error_message': 'need a start value'})
+                        'error_message': 'need a start value'}), 400
     # no end, error
     if not end:
         return jsonify({'status': 'error',
-                        'error_message': 'need an end value'})
+                        'error_message': 'need an end value'}), 400
 
     # create a random int or float as requested
     rand_num = 0
@@ -38,7 +38,7 @@ def random_number():
 
     # success
     return jsonify({'status': 'success',
-                    'return_value': rand_num})
+                    'return_value': rand_num}), 200
 
 
 @app.route('/rand/event', methods = ['POST'])
@@ -49,11 +49,11 @@ def random_event():
     # no events, error
     if not events:
         return jsonify({'status': 'error',
-                        'error_message': 'need a list of events'})
+                        'error_message': 'need a list of events'}), 400
 
     # success
     return jsonify({'status': 'success',
-                    'return_value': random.choice(events)})
+                    'return_value': random.choice(events)}), 200
 
 
 @app.route('/rand/weighted', methods = ['POST'])
@@ -65,16 +65,16 @@ def random_weighted_event():
     # no events, error
     if not events:
         return jsonify({'status': 'error',
-                        'error_message': 'need a list of events'})
+                        'error_message': 'need a list of events'}), 400
     # no weights, error
     if not weights:
         return jsonify({'status': 'error',
-                        'error_message': 'need a list of weights for each event'})
+                        'error_message': 'need a list of weights for each event'}), 400
     # check len weights and events
     if len(weights) != len(events):
         return jsonify({'status': 'error',
-                        'error_message': 'need a weight for each event'})
+                        'error_message': 'need a weight for each event'}), 400
 
     # success
     return jsonify({'status': 'success',
-                    'return_value': random.choices(events, weights, k = 1)})
+                    'return_value': random.choices(events, weights, k = 1)}), 200
