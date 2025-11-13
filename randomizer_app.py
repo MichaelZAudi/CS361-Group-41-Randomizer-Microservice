@@ -44,7 +44,7 @@ def random_number():
 @app.route('/rand/event', methods = ['POST'])
 def random_event():
     in_data = request.get_json()
-    events = in_data.get_json('events', [])
+    events = in_data.get('events', [])
 
     # no events, error
     if not events:
@@ -59,8 +59,8 @@ def random_event():
 @app.route('/rand/weighted', methods = ['POST'])
 def random_weighted_event():
     in_data = request.get_json()
-    events = in_data.get_json('events', [])
-    weights = in_data.get_json('weights', [])
+    events = in_data.get('events', [])
+    weights = in_data.get('weights', [])
 
     # no events, error
     if not events:
