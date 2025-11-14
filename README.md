@@ -44,4 +44,4 @@ if incoming_data.get('status') == 'success':
 ```
 
 ## UML sequence diagram:
-
+![UML Diagram Randomization Microservice](Randomizer_UML.png)
