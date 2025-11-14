@@ -8,9 +8,9 @@
 * Main program sends a HTTP POST request to the url of the public server (hosted via Render) corresponding to the type of randomized result that they want. The request and all relevant information to it is stored in a JSON object, which is sent during the request.
 
 * Required data: 
-    Random Number: 'type': 'int' || 'float', 'start': int, 'end': int >= 'start'
-    Random Event: 'events': {1+ event array}
-    Weighted Random Event: 'events': {1+ event array}, 'weights': {int array of weights equal in length to 'events' list}
+    * Random Number: 'type': 'int' || 'float', 'start': int, 'end': int >= 'start'
+    * Random Event: 'events': {1+ event array}
+    * Weighted Random Event: 'events': {1+ event array}, 'weights': {int array of weights equal in length to 'events' list}
 
 * Example call in Python (Random Number):
 ```
@@ -30,7 +30,7 @@ response = requests.post(url_server, json = request_data)
 
 ## Receiving data:
 * The microservice returns a JSON object containing the status of the request and the result of the request as a return_value.
-* Example call in Python (sum calculation):
+* Example call in Python (Random Number):
 
 ```
     *** continued from above ***
