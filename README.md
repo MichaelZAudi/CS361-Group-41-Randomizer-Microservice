@@ -7,6 +7,11 @@
 ## Requesting data:
 * Main program sends a HTTP POST request to the url of the public server (hosted via Render) corresponding to the type of randomized result that they want. The request and all relevant information to it is stored in a JSON object, which is sent during the request.
 
+* Required data: 
+    Random Number: 'type': 'int' || 'float', 'start': int, 'end': int >= 'start'
+    Random Event: 'events': {1+ event array}
+    Weighted Random Event: 'events': {1+ event array}, 'weights': {int array of weights equal in length to 'events' list}
+
 * Example call in Python (Random Number):
 ```
 import requests 
@@ -17,7 +22,7 @@ url_server = 'https://cs361-group-41-randomizer-microservice.onrender.com/rand/n
 # Package data of request
 request_data = {'type': 'int', 'start': 0, 'end': 12}
 
-# send request and save response
+# Send request and save response
 response = requests.post(url_server, json = request_data)
 
     *** continued below ***
@@ -30,10 +35,10 @@ response = requests.post(url_server, json = request_data)
 ```
     *** continued from above ***
     
-# parse data into a dictionary
+# Parse data into a dictionary
 incoming_data = response.json()
 
-# statistic (sum) is the value of 'return_value' key 
+# Random number is the value of 'return_value' key 
 if incoming_data.get('status') == 'success':
     print(f"Random Number: {incoming_data.get('return_value')}")
 ```
