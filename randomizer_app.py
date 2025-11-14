@@ -3,6 +3,7 @@ import random
 
 app = Flask(__name__)
 
+
 # health check
 @app.route('/health', methods = ['GET'])
 def health_check():
@@ -77,4 +78,4 @@ def random_weighted_event():
 
     # success
     return jsonify({'status': 'success',
-                    'return_value': random.choices(events, weights, k = 1)}), 200
+                    'return_value': random.choices(events, weights, k = 1)[0]}), 200
