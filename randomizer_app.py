@@ -13,12 +13,12 @@ def health_check():
 @app.route('/rand/num', methods = ['POST'])
 def random_number():
     in_data = request.get_json()
-    type = in_data.get('type')
+    rand_type = in_data.get('type')
     start = in_data.get('start')
     end = in_data.get('end')
 
     # no type, error
-    if not type:
+    if not rand_type:
         return jsonify({'status': 'error',
                         'error_message': 'need a type (int or float) to return'}), 400
     # no start, error
@@ -32,9 +32,9 @@ def random_number():
 
     # create a random int or float as requested
     rand_num = 0
-    if type == 'int':
+    if rand_type == 'int':
         rand_num = random.randrange(start, end)
-    elif type == 'float':
+    elif rand_type == 'float':
         rand_num = random.uniform(start, end)
 
     # success
